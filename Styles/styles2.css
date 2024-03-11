@@ -1,1 +1,109 @@
-/*# sourceMappingURL=styles2.css.map */
+@import url("https://use.typekit.net/efa7ivj.css");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "macho", sans-serif;
+  background-color: rgb(12, 124, 16);
+  position: relative;
+}
+
+nav {
+  height: 5%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+nav .nav-btn {
+  background-color: rgb(122, 30, 182);
+  color: #ddd;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  column-gap: 0.5rem;
+  padding: 0.6rem;
+  cursor: pointer;
+  border: 5px;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 6px 10px 0px, rgba(0, 0, 0, 0.1) 0px 0px 0px 1px;
+  position: relative;
+}
+nav .nav-btn i {
+  font-size: 2rem;
+  color: #ddd;
+}
+nav .nav-dropdown {
+  position: absolute;
+  left: 20%;
+  top: 100%;
+  width: 250px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 6px 10px 0px, rgba(0, 0, 0, 0.1) 0px 0px 0px 1px;
+  border-radius: 5px;
+  background: rgb(122, 30, 182);
+  transition: all 0.1s cubic-bezier(0.16, 1, 0.5, 1);
+  transform: translateY(0.5rem);
+  visibility: hidden;
+  opacity: 0;
+}
+nav .nav-dropdown a {
+  display: flex;
+  align-items: center;
+  column-gap: 0.5rem;
+  padding: 0.8rem 1rem;
+  text-decoration: none;
+  font-weight: 300;
+  color: #ddd;
+}
+nav .nav-dropdown a:hover {
+  background-color: #ddd;
+  color: rgb(122, 30, 182);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#savedContainer {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 5%;
+  background-color: rgb(122, 30, 182);
+}
+#savedContainer #savedImgs {
+  background-color: rgb(122, 30, 182);
+  column-gap: 0.5rem;
+  padding: 0.6rem;
+  cursor: pointer;
+  border: 5px;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 6px 10px 0px, rgba(0, 0, 0, 0.1) 0px 0px 0px 1px;
+}
+#savedContainer #savedImgs i {
+  font-size: 2rem;
+  color: #ddd;
+}
+#savedContainer #savedImgs #MERGED_ICON {
+  background: rgb(122, 30, 182);
+}
+#savedContainer #savedImgs #MERGED_ICON .cls-2,
+#savedContainer #savedImgs #MERGED_ICON .cls-3 {
+  background-color: rgb(122, 30, 182);
+  fill: #ddd;
+  stroke: #ddd;
+  transition: fill 0.2s ease-in-out;
+}
+
+#galleryTitle {
+  font-size: 5rem;
+  font-weight: 500;
+  text-align: center;
+  color: #ddd;
+}/*# sourceMappingURL=styles2.css.map */

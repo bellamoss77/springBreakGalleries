@@ -1,0 +1,124 @@
+@import url("https://use.typekit.net/efa7ivj.css");
+
+$machoFont: 'macho', sans-serif;
+$purple: rgba(122,30,182,1);
+$darkTeal: rgba(31,120,138,1);
+$darkGreen: rgba(12,124,16,1);
+$deepRed: rgba(157,6,24,1);
+$darkerPink: rgba(175,9,177,1);
+$lightText: #ddd;
+$boxShadow: rgba(0, 0, 0, 0.5) 0px 6px 10px 0px,
+            rgba(0, 0, 0, 0.1) 0px 0px 0px 1px;
+$gap: 0.5rem;
+$radius: 5px;
+
+@mixin flex($direction, $justify, $align) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $machoFont;
+    background-color: $darkGreen;
+    position: relative;
+}
+nav {
+    height: 5%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    @include flex(row, space-around, center);
+    .nav-btn {
+        background-color: $purple;
+        color: $lightText;
+        @include flex(row, flex-start, center);
+        column-gap: $gap;
+        padding: 0.6rem;
+        cursor: pointer;
+        border: $radius;
+        border: none;
+        box-shadow: $boxShadow;
+        position: relative;
+        i {
+            font-size: 2rem;
+            color: $lightText;
+        }
+    }
+    
+    .nav-dropdown {
+        position: absolute;
+        left: 20%;
+        top: 100%;
+        width: 250px;
+        box-shadow: $boxShadow;
+        border-radius: $radius;
+        background: $purple;
+        transition: all 0.1s cubic-bezier(0.16, 1, 0.5, 1);
+        transform: translateY(0.5rem);
+        visibility: hidden;
+        opacity: 0;
+        a {
+            display: flex;
+            align-items: center;
+            column-gap: $gap;
+            padding: 0.8rem 1rem;
+            text-decoration: none;
+            font-weight: 300;
+            color: $lightText;
+            &:hover {
+                background-color: #ddd;
+                color: $purple;
+                font-weight: 600;
+                cursor: pointer;
+                
+            }
+        }
+            
+    }
+}
+
+#savedContainer {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 5%;
+    background-color: $purple;
+    #savedImgs {
+        background-color: $purple;
+        column-gap: $gap;
+        padding: 0.6rem;
+        cursor: pointer;
+        border: $radius;
+        border: none;
+        box-shadow: $boxShadow;
+        i {
+            font-size: 2rem;
+            color: $lightText;
+        }
+        #MERGED_ICON {
+            background: $purple;
+            .cls-2, 
+            .cls-3 {
+                background-color: $purple;
+                fill: #ddd;
+                stroke: #ddd;
+                transition: fill 0.2s ease-in-out;
+            }
+        }
+    }    
+}
+#galleryTitle {
+    font-size: 5rem;
+    font-weight: 500;
+    text-align: center;
+    color: $lightText;
+}
