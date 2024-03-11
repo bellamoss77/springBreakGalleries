@@ -1,0 +1,78 @@
+@import url("https://use.typekit.net/efa7ivj.css");
+
+$machoFont: 'macho', sans-serif;
+$purple: rgba(122,30,182,1);
+$darkTeal: rgba(31,120,138,1);
+$darkGreen: rgba(12,124,16,1);
+$deepRed: rgba(157,6,24,1);
+$darkerPink: rgba(175,9,177,1);
+$lightText: #ddd;
+
+@mixin flex($direction, $justify, $align) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+
+html,
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    display: block;
+    font-family: $machoFont;
+    width: 100%;
+    height: 100%;
+}
+
+#intro {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    background-color: $purple;
+    overflow-x: hidden;
+    #pageTitle {
+        position: absolute;
+        top: 45%;
+        left: 15%;
+        color: $lightText;
+        font-size: 4rem;
+    }
+    #downArrow {
+        position: absolute;
+        right: 15%;
+        top: 45%;
+        font-size: 8rem;
+        color: $lightText;
+    }    
+}
+
+#galleryLinksContainer {
+    display: grid;
+    grid-template-columns: repeat(4, 100vw);
+    height: 100vh;
+    width: 400vw;
+    a.gallery-tile {
+        text-decoration: none;
+        height: 100%;
+        width: 100vw;
+        @include flex(column, center, center);
+        font-size: 6rem;
+        font-weight: 600;
+        color: $lightText;
+    }
+    .light-painting {
+        background-color: $darkGreen;
+    }
+    .playtime {
+        background-color: $darkerPink;
+    }
+    .pleasant-grove {
+        background-color: $darkTeal;
+    }
+    .sunset {
+        background-color: $deepRed;
+    }
+}
