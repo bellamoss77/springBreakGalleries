@@ -1,15 +1,16 @@
 @import url("https://use.typekit.net/efa7ivj.css");
 
-$machoFont: 'macho', sans-serif;
+$machoFont: macho, sans-serif;
 $purple: rgba(122,30,182,1);
 $darkTeal: rgba(31,120,138,1);
 $darkGreen: rgba(12,124,16,1);
 $deepRed: rgba(157,6,24,1);
 $darkerPink: rgba(175,9,177,1);
+$activeLikeBG: rgba(200,122,255,0.8);
 $lightText: #ddd;
 $boxShadow: rgba(0, 0, 0, 0.5) 0px 6px 10px 0px,
             rgba(0, 0, 0, 0.1) 0px 0px 0px 1px;
-$gap: 0.5rem;
+$gap: 1rem;
 $radius: 5px;
 
 @mixin flex($direction, $justify, $align) {
@@ -19,14 +20,29 @@ $radius: 5px;
     align-items: $align;
 }
 
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    35% {
+        transform: scale(1.25);
+    }
+    70% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.25);
+    }
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: $machoFont;
 }
 
 body {
-    font-family: $machoFont;
     background-color: $darkGreen;
     position: relative;
 }
@@ -117,8 +133,55 @@ nav {
     }    
 }
 #galleryTitle {
+    height: 50vh;
+    width: 100vw;
     font-size: 5rem;
     font-weight: 500;
     text-align: center;
     color: $lightText;
 }
+
+#imageGalleryContainer {
+    width: 90vw;
+    margin: auto;
+    @include flex(row, center, center);
+    column-gap: $gap;
+    row-gap: $gap;
+    flex-wrap: wrap;
+    .slide-img {
+        width: 40%;
+        height: 30%;
+        position: relative;
+        img {
+            width: 100%;
+            height: 100%;
+        }
+        .like-btn {
+            transform-origin: center;
+            background: none;
+            border: none;
+            outline: none;
+            width: 3rem;
+            height: 3rem;
+            position: absolute;
+            top: 5%;
+            right: 5%;
+            svg {
+                transform-origin: center;
+                margin: 10% auto auto;
+            }
+    
+            
+            &:active {
+                background: $activeLikeBG;
+                border-radius: 50%;
+                
+            }
+            &:hover {
+                animation: pulse 1s reverse infinite;
+            }
+
+        }
+    }
+}
+

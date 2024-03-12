@@ -1,12 +1,26 @@
 @import url("https://use.typekit.net/efa7ivj.css");
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  35% {
+    transform: scale(1.25);
+  }
+  70% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.25);
+  }
+}
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: macho, sans-serif;
 }
 
 body {
-  font-family: "macho", sans-serif;
   background-color: rgb(12, 124, 16);
   position: relative;
 }
@@ -28,7 +42,8 @@ nav .nav-btn {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  column-gap: 0.5rem;
+  -moz-column-gap: 1rem;
+       column-gap: 1rem;
   padding: 0.6rem;
   cursor: pointer;
   border: 5px;
@@ -56,7 +71,8 @@ nav .nav-dropdown {
 nav .nav-dropdown a {
   display: flex;
   align-items: center;
-  column-gap: 0.5rem;
+  -moz-column-gap: 1rem;
+       column-gap: 1rem;
   padding: 0.8rem 1rem;
   text-decoration: none;
   font-weight: 300;
@@ -79,7 +95,8 @@ nav .nav-dropdown a:hover {
 }
 #savedContainer #savedImgs {
   background-color: rgb(122, 30, 182);
-  column-gap: 0.5rem;
+  -moz-column-gap: 1rem;
+       column-gap: 1rem;
   padding: 0.6rem;
   cursor: pointer;
   border: 5px;
@@ -102,8 +119,54 @@ nav .nav-dropdown a:hover {
 }
 
 #galleryTitle {
+  height: 50vh;
+  width: 100vw;
   font-size: 5rem;
   font-weight: 500;
   text-align: center;
   color: #ddd;
+}
+
+#imageGalleryContainer {
+  width: 90vw;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  -moz-column-gap: 1rem;
+       column-gap: 1rem;
+  row-gap: 1rem;
+  flex-wrap: wrap;
+}
+#imageGalleryContainer .slide-img {
+  width: 40%;
+  height: 30%;
+  position: relative;
+}
+#imageGalleryContainer .slide-img img {
+  width: 100%;
+  height: 100%;
+}
+#imageGalleryContainer .slide-img .like-btn {
+  transform-origin: center;
+  background: none;
+  border: none;
+  outline: none;
+  width: 3rem;
+  height: 3rem;
+  position: absolute;
+  top: 5%;
+  right: 5%;
+}
+#imageGalleryContainer .slide-img .like-btn svg {
+  transform-origin: center;
+  margin: 10% auto auto;
+}
+#imageGalleryContainer .slide-img .like-btn:active {
+  background: rgba(200, 122, 255, 0.8);
+  border-radius: 50%;
+}
+#imageGalleryContainer .slide-img .like-btn:hover {
+  animation: pulse 1s reverse infinite;
 }/*# sourceMappingURL=styles2.css.map */
