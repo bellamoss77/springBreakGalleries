@@ -99,21 +99,24 @@ function createGalleryWithLikeBtns(images) {
         <path id="HEART" class="cls-3" d="M22.76,8.25C12.57-3.29,2,3.36,2,14.32c0,9.98,20.76,24.26,20.76,24.26,0,0,21.5-14.67,21.5-25.24S30.96-3.29,22.76,8.25Z"/>
       </svg>`;
         likeBtn.classList.add('like-btn');
-        likeBtn.id = `like-btn-${image.id}`;
-
+        
         const svgElement = likeBtn.querySelector('svg');
 
         setSvgStyle(svgElement, image.liked ? 'active' : 'inactive');
 
-        likeBtn.addEventListener('click', () => handleLikeBtnClick(image.id, setSvgStyle));
+        likeBtn.addEventListener('click', () => {
+            image.liked = !image.liked;
+            setSvgStyle(svgElement, image.liked ? 'active' : 'inactive');
+            updateLikedImagesDisplay();
+            });      
+
         likeBtn.addEventListener('mouseenter', () => setSvgStyle(svgElement, 'hover'));
         likeBtn.addEventListener('mouseleave', () => setSvgStyle(svgElement, image.liked ? 'active' : 'inactive'));
 
         imageSlide.appendChild(imgElement);
         imageSlide.appendChild(likeBtn);
         gallery.appendChild(imageSlide);
-        
-    });
+    })
 }
 
 function setSvgStyle(svg, state) {
@@ -126,7 +129,7 @@ function setSvgStyle(svg, state) {
         case 'active':
             cls2.style.fill = '#1d3050';
             cls4.style.stroke = '#1d3050';
-            cls3.style.stroke = 'ed1c24';
+            cls3.style.stroke = '#ed1c24';
             svg.style.opacity = '1';
             break;
         case 'hover':
@@ -155,19 +158,17 @@ createGalleryWithLikeBtns(images);
 
 function handleLikeBtnClick(imageId, svgElement) {
     console.log(`Like button clicked for image ID: ${imageId}`);
-    const image = images.find(img => img.id === imageId);
+    
     if (image) {
         console.log(`Toggling like state for: ${image.title}`);
         image.liked = !image.liked;
         setSvgStyle(svgElement, image.liked ? 'active' : 'inactive')
         updateLikedImagesDisplay();
 
-        const likeBtn = document.getElementById(`like-btn-${image.id}`);
+        const likeBtn = document.getElementById('savedImgs');
         if (likeBtn) {
             likeBtn.innerHTML = image.liked ? '<i class="fa-solid fa-heart"></i>' : '<i class="fa-regular fa-heart"></i>';
-        } else {
-            console.log(`Image not found for ID: ${imageId}`);
-        }
+        } 
     }
 }
 
@@ -175,17 +176,48 @@ function updateLikedImagesDisplay() {
     console.log('Updating display...');
     const likedImages = images.filter(image => image.liked);
     console.log(`Found ${likedImages.length} liked images.`)
+    const likedImgContainer = document.getElementById('savedContainer');
     const likedDropdownList = document.getElementById('likedDropdownList');
     const itemsList = likedDropdownList.querySelector('ol');
+    const savedImgsBtn = document.getElementById('savedImgs');
+    const arrowSaved = document.getElementById('arrowSaved');
 
     itemsList.innerHTML = '';
 
     likedImages.forEach(image => {
+        
         console.log(`Adding to display: ${image.title}`);
         const listItem = document.createElement('li');
         listItem.textContent = image.title;
         itemsList.appendChild(listItem);
     });
+
+    if (likedImages.length > 0) {
+        likedImgContainer.style.display = 'block';
+        gsap.set(likedDropdownList, { autoAlpha: 0 });
+        gsap.set(arrowSaved, { rotation: 0 });
+    } else {
+        likedImgContainer.style.display = 'none';
+    }
+
+    
+
+    
+  
+    savedImgsBtn.addEventListener('click', () => {
+        const isVisible = gsap.getProperty(likedDropdownList, 'autoAlpha') > 0;
+    
+        if (isVisible) {
+            gsap.to(likedDropdownList, { duration: 0.3, autoAlpha: 0 });
+            gsap.to(arrowSaved, { duration: 0.3, rotation: 0 });
+        } else {
+            gsap.to(likedDropdownList, {duration: 0.3, autoAlpha: 1, y: 20 });
+            gsap.to(arrowSaved, { duration: 0.3, rotation: 180 });
+        }
+    });
+    const isListVisible = likedDropdownList.style.display === 'block';
+    likedDropdownList.style.display = isListVisible ? 'none' : 'block';
+    
 
     likedDropdownList.style.display = likedImages.length > 0 ? 'block' : 'none';
 }
