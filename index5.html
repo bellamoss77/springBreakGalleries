@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stunning Sunset Gallery</title>
+    <link rel="stylesheet" href="Styles/styles5.css">
+    <link rel="stylesheet" href="https://use.typekit.net/efa7ivj.css">
+    <script src="https://kit.fontawesome.com/8f1f53b08b.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="galleryIntro">
+        <h1>Stunning Sunset</h1>
+        <i class="fa-solid fa-mountain-sun"></i>
+        <i id="downArrow" class="fa-solid fa-arrow-down-long"></i>
+    </div>
+    <nav>
+        <button id="navBtn" class="nav-btn">
+            <i class="fa-regular fa-compass"></i>
+            <i id="arrowNav" class="fa-solid fa-angle-down"></i>
+        </button>
+        <div id="navDropdown" class="nav-dropdown">
+            <a href="index2.html"><i class="fa-solid fa-paintbrush"></i> Light Painting</a>
+            <a href="index3.html"><i class="fa-solid fa-paw"></i> Playtime</a>
+            <a href="index4.html"><i class="fa-solid fa-person-hiking"></i> Pleasant Grove</a>
+            <a href="index.html"><i class="fa-solid fa-house"></i></a>
+        </div>           
+    </nav>
+    <div id="savedContainer" class="saved-container">
+        <button id="savedImgs" class="saved-imgs">
+            <i id="arrowSaved" class="fa-solid fa-angle-down"></i>
+            <svg id="MERGED_ICON" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 46.26 41" width="2rem" height="2rem">
+                <defs>
+                  <style>
+                    .cls-1 {
+                      stroke-width: 0px;
+                    }
+              
+                    .cls-1, .cls-2 {
+                      fill: #1d3050;
+                    }
+              
+                    .cls-2, .cls-3, .cls-4 {
+                      stroke-miterlimit: 10;
+                    }
+              
+                    .cls-2, .cls-4 {
+                      stroke: #1d3050;
+                      stroke-width: 2px;
+                    }
+              
+                    .cls-3 {
+                      stroke: #ed1c24;
+                      stroke-width: 4px;
+                    }
+              
+                    .cls-3, .cls-4 {
+                      fill: none;
+                    }
+                  </style>
+                </defs>
+                <path id="IMAGE" class="cls-4" d="M23.43,11.19c10.17,0,9.49-1.75,9.49,9.1s1.13,9.68-9.44,9.68-9.54,1.43-9.54-11.15c0-8.8,1.12-7.63,9.49-7.63Z"/>
+                <path id="IMG-MOUNTAINS" class="cls-2" d="M14.91,26.25c3.91-5.28,3.91-6.85,6.07-2.74,3.13-3.52,3.13-7.41,7.04-2.33s4.78,6.51,4.78,6.51c0,0-.72,1.15-9.37,1.3s-8.51-2.74-8.51-2.74Z"/>
+                <g id="IMG-SUN">
+                  <path class="cls-1" d="M19.41,15.1c2.35,0,3.33,3.64,0,3.64s-2.35-3.64,0-3.64Z"/>
+                </g>
+                <path id="HEART" class="cls-3" d="M22.76,8.25C12.57-3.29,2,3.36,2,14.32c0,9.98,20.76,24.26,20.76,24.26,0,0,21.5-14.67,21.5-25.24S30.96-3.29,22.76,8.25Z"/>
+              </svg>
+        </button>
+        <div id="likedDropdownList" class="liked-list">
+            <ol></ol>
+        </div>
+    </div>
+    <div id="scrollContainer">
+        <div id="panel_1" class="panel" data-id="1">
+            <img src="images/SUNSET_MIN/SUNSET1.png" alt="sunset">
+        </div>
+        <div id="panel_2" class="panel" data-id="2">
+            <img src="images/SUNSET_MIN/SUNSET2.png" alt="sunset">
+        </div>
+        <div id="panel_3" class="panel" data-id="3">
+            <img src="images/SUNSET_MIN/SUNSET3.png" alt="sunset">
+        </div>
+        <div id="panel_4" class="panel" data-id="4">
+            <img src="images/SUNSET_MIN/SUNSET4.png" alt="sunset">
+        </div>
+        <div id="panel_5" class="panel" data-id="5">
+            <img src="images/SUNSET_MIN/SUNSET5.png" alt="sunset">
+        </div>
+        <div id="panel_6" class="panel" data-id="6">
+            <img src="images/SUNSET_MIN/SUNSET6.png" alt="sunset">
+        </div>
+    </div>
+    <div id="thumbnailsPanel">
+        <a href="#panel_1">
+            <img src="images/SUNSET_MIN/SUNSET1.png" alt="sunset" class="thumbnail">
+        </a>
+        <a href="#panel_2">
+            <img src="images/SUNSET_MIN/SUNSET2.png" alt="sunset" class="thumbnail">
+        </a>
+        <a href="#panel_3">
+            <img src="images/SUNSET_MIN/SUNSET3.png" alt="sunset" class="thumbnail">
+        </a>
+        <a href="#panel_4">
+            <img src="images/SUNSET_MIN/SUNSET4.png" alt="sunset" class="thumbnail">
+        </a>
+        <a href="#panel_5">
+            <img src="images/SUNSET_MIN/SUNSET5.png" alt="sunset" class="thumbnail">
+        </a>
+        <a href="#panel_6">
+            <img src="images/SUNSET_MIN/SUNSET6.png" alt="sunset" class="thumbnail">
+        </a>        
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="code5.js"></script>
+</body>
+</html>

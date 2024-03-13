@@ -1,0 +1,257 @@
+@import url("https://use.typekit.net/efa7ivj.css");
+
+$machoFont: 'macho', sans-serif;
+$purple: rgba(122,30,182,1);
+$darkTeal: rgba(31,120,138,1);
+$darkGreen: rgba(12,124,16,1);
+$deepRed: rgba(157,6,24,1);
+$darkerPink: rgba(175,9,177,1);
+$lightText: #ddd;
+$boxShadow: rgba(0, 0, 0, 0.5) 0px 6px 10px 0px,
+            rgba(0, 0, 0, 0.1) 0px 0px 0px 1px;
+$gap: 1rem;
+$radius: 5px;
+
+@mixin flex($direction, $justify, $align) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    35% {
+        transform: scale(1.25);
+    }
+    70% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.25);
+    }
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: $machoFont;
+}
+
+body {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas: 
+        "intro . . . . ."
+        "img img img img img img"
+        ". . . . . thumbnails";
+}
+
+/*  DROPDOWNS   */  
+
+nav {
+    height: 5%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    @include flex(row, space-around, center);
+    .nav-btn {
+        background-color: $purple;
+        color: $lightText;
+        @include flex(row, flex-start, center);
+        column-gap: $gap;
+        padding: 0.6rem;
+        cursor: pointer;
+        border: $radius;
+        border: none;
+        box-shadow: $boxShadow;
+        position: relative;
+        i {
+            font-size: 2rem;
+            color: $lightText;
+        }
+    }
+    
+    .nav-dropdown {
+        position: absolute;
+        left: 20%;
+        top: 100%;
+        width: 250px;
+        box-shadow: $boxShadow;
+        border-radius: $radius;
+        background: $purple;
+        transition: all 0.1s cubic-bezier(0.16, 1, 0.5, 1);
+        transform: translateY(0.5rem);
+        visibility: hidden;
+        opacity: 0;
+        a {
+            display: flex;
+            align-items: center;
+            column-gap: $gap;
+            padding: 0.8rem 1rem;
+            text-decoration: none;
+            font-weight: 300;
+            color: $lightText;
+            &:hover {
+                background-color: #ddd;
+                color: $purple;
+                font-weight: 600;
+                cursor: pointer;
+                
+            }
+        }
+            
+    }
+}
+
+#savedContainer {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 5%;
+    z-index: 1000;
+    #savedImgs {
+        z-index: 1000;
+        background-color: #e4c1fb;
+        color: $lightText;
+        @include flex(row, flex-start, center);
+        column-gap: $gap;
+        //padding: 0.3rem;
+        cursor: pointer;
+        border: $radius;
+        border: none;
+        box-shadow: $boxShadow;
+        position: relative;
+        svg {
+            .cls-1, .cls-2 {
+                fill: #1d3050;
+            }
+            .cls-2, .cls-4 {
+                stroke: #1d3050;
+                stroke-width: 2px;
+            }
+            .cls-3 {
+                stroke: #ed1c24;
+                stroke-width: 4px;
+            }
+            .cls-3, .cls-4 {
+                fill: none;
+              }
+        }
+        i {
+            font-size: 2rem;
+            color: #ed1c24;
+        }
+    }
+    #likedDropdownList {
+        position: absolute;
+        top: 110%;
+        right: 20%;
+        width: 250px;
+        box-shadow: $boxShadow;
+        border-radius: $radius;
+        background: $purple;
+        display: none;
+        transition: all 0.1s cubic-bezier(0.16, 1, 0.5, 1);
+        transform: translateY(0.5rem);
+        li {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            column-gap: $gap;
+            padding: 0.8rem 1rem;
+            text-decoration: none;
+            font-weight: 400;
+            color: $lightText;
+
+        }
+        
+    }    
+}
+
+/*  PANELS  */
+
+#galleryIntro {
+    grid-area: intro;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle, rgba(247,234,193,1) 0%, rgba(248,185,136,1) 19%, rgba(235,141,136,1) 32%, rgba(194,105,137,1) 50%, rgba(143,112,158,1) 64%, rgba(105,93,140,1) 79%, rgba(85,90,135,1) 100%);
+    @include flex(column, center, center);
+    h1 {
+        font-family: $machoFont;
+        margin-bottom: 5%;
+        color: #c9030d;
+        font-size: 4rem;
+    }
+    i {
+        margin-bottom: 5%;
+        color: #c9030d;
+        font-size: 5rem;
+
+    }
+}
+
+#scrollContainer {
+    grid-area: img;
+    height: 100vh;
+    width: 600vw;
+    display: flex;
+    //justify-content: flex-start;
+    flex-wrap: nowrap;
+    background-color: #555a87;
+    
+    .panel {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        img {
+            width: 100%;
+            height: 100%;
+            border: 5px inset #555a87;
+        }
+        .like-btn {
+            transform-origin: center;
+            background: none;
+            border: none;
+            outline: none;
+            width: 3rem;
+            height: 3rem;
+            position: absolute;
+            top: 5%;
+            right: 5%;
+            svg {
+                transform-origin: center;
+                margin: 10% auto auto;
+            }  
+            &:hover {
+                animation: pulse 1s reverse infinite;
+            }
+            
+        }
+    }
+}
+
+#thumbnailsPanel {
+    grid-area: thumbnails;
+    height: 100vh;
+    width: 100vw;
+    background: radial-gradient(circle, rgba(247,234,193,1) 0%, rgba(248,185,136,1) 8%, rgba(235,141,136,1) 20%, rgba(194,105,137,1) 31%, rgba(143,112,158,1) 41%, rgba(105,93,140,1) 52%, rgba(85,90,135,1) 100%);
+    @include flex(row, space-around, space-around);
+    flex-wrap: wrap;
+    flex-shrink: 1;
+    a {
+        width: 30vw;
+        height: 25vw;
+        overflow: hidden;
+        img {
+            height: 100%;
+            width: auto;
+        }
+    }
+
+}
