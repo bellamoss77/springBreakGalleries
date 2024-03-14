@@ -1,0 +1,283 @@
+@import url("https://use.typekit.net/efa7ivj.css");
+
+/*      VARIABLES, MIXINS, KEYFRAMES        */
+
+$machoFont: 'macho', sans-serif;
+$purple: rgba(122,30,182,1);
+$darkTeal: rgba(31,120,138,1);
+$darkGreen: rgba(12,124,16,1);
+$deepRed: rgba(157,6,24,1);
+$darkerPink: rgba(175,9,177,1);
+$lightText: #ddd;
+$boxShadow: rgba(0, 0, 0, 0.5) 0px 6px 10px 0px,
+            rgba(0, 0, 0, 0.1) 0px 0px 0px 1px;
+$gap: 1rem;
+$radius: 5px;
+
+@mixin flex($direction, $justify, $align) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    25% {
+        transform: scale(1.25);
+    }
+    50% {
+        transform: scale(1);
+    }
+    75% {
+        transform: scale(1.25);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/*      DROPDOWNS       */
+
+nav {
+    height: 5%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    @include flex(row, space-around, center);
+    .nav-btn {
+        background-color: $purple;
+        color: $lightText;
+        @include flex(row, flex-start, center);
+        column-gap: $gap;
+        padding: 0.6rem;
+        cursor: pointer;
+        border: $radius;
+        border: none;
+        box-shadow: $boxShadow;
+        position: relative;
+        i {
+            font-size: 2rem;
+            color: $lightText;
+        }
+    }    
+    .nav-dropdown {
+        position: absolute;
+        left: 20%;
+        top: 100%;
+        width: 250px;
+        box-shadow: $boxShadow;
+        border-radius: $radius;
+        background: $purple;
+        transition: all 0.1s cubic-bezier(0.16, 1, 0.5, 1);
+        transform: translateY(0.5rem);
+        visibility: hidden;
+        opacity: 0;
+        a {
+            display: flex;
+            align-items: center;
+            column-gap: $gap;
+            padding: 0.8rem 1rem;
+            text-decoration: none;
+            font-weight: 300;
+            color: $lightText;
+            &:hover {
+                background-color: #ddd;
+                color: $purple;
+                font-weight: 600;
+                cursor: pointer;
+                
+            }
+        }
+            
+    }
+}
+
+#savedContainer {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 5%;
+    z-index: 1000;
+    #savedImgs {
+        z-index: 1000;
+        background-color: #e4c1fb;
+        color: $lightText;
+        @include flex(row, flex-start, center);
+        column-gap: $gap;
+        //padding: 0.3rem;
+        cursor: pointer;
+        border: $radius;
+        border: none;
+        box-shadow: $boxShadow;
+        position: relative;
+        svg {
+            .cls-1, .cls-2 {
+                fill: #1d3050;
+            }
+            .cls-2, .cls-4 {
+                stroke: #1d3050;
+                stroke-width: 2px;
+            }
+            .cls-3 {
+                stroke: #ed1c24;
+                stroke-width: 4px;
+            }
+            .cls-3, .cls-4 {
+                fill: none;
+              }
+        }
+        i {
+            font-size: 2rem;
+            color: #ed1c24;
+        }
+    }
+    #likedDropdownList {
+        position: absolute;
+        top: 110%;
+        right: 20%;
+        width: 250px;
+        box-shadow: $boxShadow;
+        border-radius: $radius;
+        background: $purple;
+        display: none;
+        transition: all 0.1s cubic-bezier(0.16, 1, 0.5, 1);
+        transform: translateY(0.5rem);
+        li {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            column-gap: $gap;
+            padding: 0.8rem 1rem;
+            text-decoration: none;
+            font-weight: 400;
+            color: $lightText;
+
+        }
+        
+    }    
+}
+
+.like-btn {
+    z-index: 1000;
+    transform-origin: center;
+    background: none;
+    border: none;
+    outline: none;
+    width: 3rem;
+    height: 3rem;
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    svg {
+        transform-origin: center;
+        margin: 10% auto auto;
+    }
+
+    
+    &:active {
+        background: $activeLikeBG;
+        border-radius: 50%;
+        
+    }
+    &:hover {
+        animation: pulse 1s reverse infinite;
+    }
+
+}
+
+/*      BODY, INTRO + GALLERY STYLES      */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1d3050;
+    font-family: $machoFont;
+}
+
+#galleryTitle {
+    background-color: $darkerPink;
+    width: 100vw;
+    height: 75vh;
+    @include flex(column, center, center);
+    font-size: 5rem;
+    font-weight: 600;
+    color: $lightText;
+    flex-basis: 20%;
+    margin-bottom: 10%;
+}
+
+#imageGalleryContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: rgba(245, 187, 187, 0.9);
+    box-shadow: $boxShadow;
+    width: 80%;
+    margin: 0 auto;
+    padding: 10px;
+
+    .gallery-item {
+        //width: 800px;
+        height: 400px;
+        flex-basis: 32.7%;
+        margin-bottom: 6px;
+        opacity: 0.85;
+        cursor: pointer;
+        &:hover {
+            opacity: 1;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            
+        }
+    }
+}
+
+/*      LIGHTBOX STYLES         */
+
+.lightbox {
+    position: fixed;
+    display: none;
+    background-color: rgba(0,0,0,0.7);
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    top: 0;
+    left:0;
+    &-content {
+        position: relative;
+        width: 70%;
+        height: 70%;
+        margin: 5% auto;
+        img {
+            border-radius: 7px;
+            box-shadow: 0 0 3px 0 rgba(225, 225, 225, 0.25);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    &-prev,
+    &-next {
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: rgba(255, 255, 255, 0.75);
+        padding: 7px;
+        top: 45%;
+        cursor: pointer;
+    }
+    &-prev {
+        left: 0;
+    }
+    &-next {
+        right: 0;
+    }
+}

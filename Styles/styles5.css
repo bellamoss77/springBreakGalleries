@@ -3,14 +3,17 @@
   0% {
     transform: scale(1);
   }
-  35% {
+  25% {
     transform: scale(1.25);
   }
-  70% {
+  50% {
     transform: scale(1);
   }
-  100% {
+  75% {
     transform: scale(1.25);
+  }
+  100% {
+    transform: scale(1);
   }
 }
 * {
@@ -21,10 +24,16 @@
 }
 
 body {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  /*grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  grid-template-areas: "intro . . . . ." "img img img img img img" ". . . . . thumbnails";
+  grid-template-areas: 
+      "intro . . . . ."
+      "img img img img img img"
+      ". . . . . thumbnails";*/
 }
 
 /*  DROPDOWNS   */
@@ -156,7 +165,6 @@ nav .nav-dropdown a:hover {
 
 /*  PANELS  */
 #galleryIntro {
-  grid-area: intro;
   width: 100vw;
   height: 100vh;
   background: radial-gradient(circle, rgb(247, 234, 193) 0%, rgb(248, 185, 136) 19%, rgb(235, 141, 136) 32%, rgb(194, 105, 137) 50%, rgb(143, 112, 158) 64%, rgb(105, 93, 140) 79%, rgb(85, 90, 135) 100%);
@@ -178,7 +186,6 @@ nav .nav-dropdown a:hover {
 }
 
 #scrollContainer {
-  grid-area: img;
   height: 100vh;
   width: 600vw;
   display: flex;
@@ -215,7 +222,6 @@ nav .nav-dropdown a:hover {
 }
 
 #thumbnailsPanel {
-  grid-area: thumbnails;
   height: 100vh;
   width: 100vw;
   background: radial-gradient(circle, rgb(247, 234, 193) 0%, rgb(248, 185, 136) 8%, rgb(235, 141, 136) 20%, rgb(194, 105, 137) 31%, rgb(143, 112, 158) 41%, rgb(105, 93, 140) 52%, rgb(85, 90, 135) 100%);

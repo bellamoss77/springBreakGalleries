@@ -1,5 +1,3 @@
-
-
 const navDropdownBtn = document.getElementById('navBtn');
 const navDropdownMenu = document.getElementById('navDropdown');
 const toggleNavArrow = document.getElementById('arrowNav');
@@ -198,11 +196,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const downArrow = document.getElementById('downArrow');
     const horizontalScrollContainer = document.getElementById('scrollContainer');
-    horizontalScrollContainer.removeAttribute('style');
-    width = horizontalScrollContainer.offsetWidth;
-    console.log(width);
-    const panel1 = document.getElementById('panel_1');
-    console.log(panel1.offsetWidth)
+    //horizontalScrollContainer.removeAttribute('style');
+    //width = horizontalScrollContainer.offsetWidth;
+    //console.log(width);
 
     gsap.to(downArrow, {
         y: 25,
@@ -212,14 +208,17 @@ document.addEventListener('DOMContentLoaded', () => {
         repeat: -1
     })
 
+
     let horizontalTween = gsap.to(horizontalScrollContainer, {
+        //xPercent: -100 * (panels.length - 1),
         x: () => -(horizontalScrollContainer.scrollWidth - window.innerWidth) + 'px',
         ease: 'none',
         scrollTrigger: {
             trigger: horizontalScrollContainer,
             pin: true,
-            //pinSpacing: false,
-            scrub: true,
+            pinSpacing: false,
+            anticipatePin: 1,
+            scrub: 0.1,
             end: () => '+=' + (horizontalScrollContainer.scrollWidth - window.innerWidth) + 'px',
             invalidateOnRefresh: true,
             markers: true
